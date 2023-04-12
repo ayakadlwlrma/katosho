@@ -1,0 +1,157 @@
+<div class="mikyan">
+<h1>trip</h1>
+<h3>一覧ページ</h3>
+<div class="scenery">
+<div class="posts-container">
+  <% @posts.each do |t| %>
+    <% if t.category == "東予" %>
+      <div class="post">
+        <%= t.name %>
+        <% if user_signed_in? %>
+          <% if current_user.already_liked?(t) %>
+              <%= link_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+                <i class="fas fa-heart"></i><%= t.likes.count %>
+              <% end %>
+          <% else %>
+              <%= link_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+                <i class="far fa-heart"></i><%= t.likes.count %>
+              <% end %>
+          <% end %>
+        <% else %>
+          <i class="far fa-heart"></i><%= t.likes.count %>
+        <% end %>
+        <%= link_to "詳細へ", post_path(t.id) %>
+      </div>
+   
+   
+    <% end %>
+   
+  <% end %>
+</div>
+
+<div class="posts-container">
+  <% @posts.each do |t| %>
+    <% if t.category == "中予" %>
+      <div class="post">
+        <%= t.name %>
+        <% if user_signed_in? %>
+          <% if current_user.already_liked?(t) %>
+              <%= link_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+                <i class="fas fa-heart"></i><%= t.likes.count %>
+              <% end %>
+          <% else %>
+              <%= link_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+                <i class="far fa-heart"></i><%= t.likes.count %>
+              <% end %>
+          <% end %>
+        <% else %>
+          <i class="far fa-heart"></i><%= t.likes.count %>
+        <% end %>
+        <%= link_to "詳細へ", post_path(t.id) %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="posts-container">
+  <% @posts.each do |t| %>
+    <% if t.category == "南予" %>
+      <div class="post">
+        <%= t.name %>
+        <% if user_signed_in? %>
+          <% if current_user.already_liked?(t) %>
+              <%= link_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+                <i class="fas fa-heart"></i><%= t.likes.count %>
+              <% end %>
+          <% else %>
+              <%= link_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+                <i class="far fa-heart"></i><%= t.likes.count %>
+              <% end %>
+          <% end %>
+        <% else %>
+          <i class="far fa-heart"></i><%= t.likes.count %>
+        <% end %>
+        <%= link_to "詳細へ", post_path(t.id) %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+</div>
+<div class="scenery">
+<div class="posts-container">
+  <% @posts.each do |t| %>
+    <% if t.category == "グルメ" %>
+      <div class="post">
+        <%= t.name %>
+        <% if user_signed_in? %>
+          <% if current_user.already_liked?(t) %>
+              <%= link_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+                <i class="fas fa-heart"></i><%= t.likes.count %>
+              <% end %>
+          <% else %>
+              <%= link_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+                <i class="far fa-heart"></i><%= t.likes.count %>
+              <% end %>
+          <% end %>
+        <% else %>
+          <i class="far fa-heart"></i><%= t.likes.count %>
+        <% end %>
+        <%= link_to "詳細へ", post_path(t.id) %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="posts-container">
+  <% @posts.each do |t| %>
+    <% if t.category == "お土産" %>
+      <div class="post">
+        <%= t.name %>
+        <% if user_signed_in? %>
+          <% if current_user.already_liked?(t) %>
+              <%= link_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+                <i class="fas fa-heart"></i><%= t.likes.count %>
+              <% end %>
+          <% else %>
+              <%= link_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+                <i class="far fa-heart"></i><%= t.likes.count %>
+              <% end %>
+          <% end %>
+        <% else %>
+          <i class="far fa-heart"></i><%= t.likes.count %>
+        <% end %>
+        <%= link_to "詳細へ", post_path(t.id) %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="posts-container">
+  <% @posts.each do |t| %>
+    <% if t.category == "イベント" %>
+      <div class="post">
+        <%= t.name %>
+        <% if user_signed_in? %>
+          <% if current_user.already_liked?(t) %>
+              <%= link_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+                <i class="fas fa-heart"></i><%= t.likes.count %>
+              <% end %>
+          <% else %>
+              <%= link_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+                <i class="far fa-heart"></i><%= t.likes.count %>
+              <% end %>
+          <% end %>
+        <% else %>
+          <i class="far fa-heart"></i><%= t.likes.count %>
+        <% end %>
+        <%= link_to "詳細へ", post_path(t.id) %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+</div>
+<%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+  <% Tag.all.each do |t| %>
+      <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
+  <% end %>
+  <%= submit_tag '検索' %>
+<% end %>
+</div>
+

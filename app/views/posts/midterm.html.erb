@@ -1,0 +1,6 @@
+<h1>中予</h1>
+<% @posts.each do |t| %>
+  <% if t.category == "midterm" %>  #ここがポイント！ categoryカラムにdogと格納されているものだけを表示している！
+  <p>内容:<%= t.content %></p>
+  <% end %>
+<% end %>
